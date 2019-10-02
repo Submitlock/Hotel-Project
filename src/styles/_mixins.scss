@@ -1,9 +1,17 @@
 @mixin btn($background) {
     letter-spacing: 2px;
-    padding: 15px 30px;
     background: $background;
+    padding: 15px 30px;
 }
-@mixin flexDirection($direction) {
+@mixin flex($direction, $content, $align) {
     display: flex;
-    flex-direction: $direction;
+    @if $direction {
+        flex-direction: $direction
+    }
+    @if $content {
+        justify-content: $content
+    }
+    @if $align {
+        align-items: $align
+    }
 }

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NavMenuComponent } from './shared/nav-menu/nav-menu.component';
+import { HomeReservationFormComponent } from './pages/home/home-reservation-form/home-reservation-form.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NavMenuComponent } from './shared/nav-menu/nav-menu.component';
     HomeComponent,
     HeaderComponent,
     NavMenuComponent,
+    HomeReservationFormComponent,
   ],
   imports: [
     BrowserModule,

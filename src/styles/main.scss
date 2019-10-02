@@ -18,8 +18,32 @@ a {
 ul {
     list-style-type: none;
 }
-
-@media only screen and (max-width: $breakPointtablet) {
+h1, h2, h3 {
+    color: $headingColor;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+h1 {
+    font-size: 50px;
+}
+h2 {
+    font-size: 25px;
+}
+h3 {
+    font-size: 20px;
+    
+}
+button {
+    border: none;
+    &:focus {
+        outline: none;
+    }
+}
+// DATE_PICKER 
+.dp-picker-input {
+    display: none;
+}
+@media only screen and (max-width: $breakPointDesktop) {
     .container {
         width: 90%;
     }

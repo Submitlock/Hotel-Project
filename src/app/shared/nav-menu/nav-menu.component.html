@@ -12,14 +12,14 @@
             <li> <a href="#" class="button"> Резервирайте </a> </li>
         </ul>
 
-        <div class="icon-open-menu">
+        <div class="icon-open-menu" (click)="mobileMenu = true">
             <img src="assets/images/icons/icon-menu-white.png" alt="mobile-menu-icon">
         </div>
 
     </div>
 
-    <div class="mobile-nav">
-        <fa name="times-circle" size="2x" class="close-icon"></fa>
+    <div class="mobile-nav" [ngClass]="{'mobile-active': mobileMenu}">
+        <fa name="times-circle" size="2x" class="close-icon" (click)="mobileMenu = false"></fa>
         <ul class="mobile-navigation">
             <li> <a href="#"> Начало </a> </li>
             <li> <a href="#"> Нашите Стаи </a> </li>
