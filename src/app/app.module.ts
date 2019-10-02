@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NavMenuComponent } from './shared/nav-menu/nav-menu.component';
 import { HomeReservationFormComponent } from './pages/home/home-reservation-form/home-reservation-form.component';
+import { TransformDatePipe } from './pipes/transform-date.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HomeReservationFormComponent } from './pages/home/home-reservation-form
     HeaderComponent,
     NavMenuComponent,
     HomeReservationFormComponent,
+    TransformDatePipe,
   ],
   imports: [
     BrowserModule,

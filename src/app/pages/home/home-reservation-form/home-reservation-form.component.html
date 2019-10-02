@@ -1,26 +1,38 @@
-<form #form (ngSubmit)="onSubmit(form)">
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="form-container">
         <div class="check-in" (click)="openCheckIn($event)">
             <label for="check-in">Пристигане</label>
             <div class="display-date">
-                <h1>20</h1>
+                <h1> {{ displayDate.checkInDay | transformDate: 'getDay' }} </h1>
                 <div class="month">
-                    <span>Oct</span>
+                    <span> {{ displayDate.checkInDay | transformDate: 'getMonth' }} </span>
                     <fa name="angle-down"></fa>
                 </div>
             </div>
-            <dp-date-picker #checkIn [config]="{'locale': 'bg', 'hideOnOutsideClick': false}"></dp-date-picker>
+            <dp-date-picker 
+                #checkIn 
+                [config]="{'locale': 'bg', 'hideOnOutsideClick': false}"
+                [(ngModel)]="reservation.checkInDate"
+                [ngModelOptions]="{standalone: true}"
+                (onSelect)="dateSelected('check-in')">
+            </dp-date-picker>
         </div>
         <div class="check-out" (click)="openCheckOut($event)">
             <label for="check-out">Напускане</label>
             <div class="display-date">
-                <h1>20</h1>
+                <h1> {{ displayDate.checkOutDay | transformDate: 'getDay' }} </h1>
                 <div class="month">
-                    <span>Oct</span>
+                    <span> {{ displayDate.checkOutDay | transformDate: 'getMonth' }} </span>
                     <fa name="angle-down"></fa>
                 </div>
             </div>
-            <dp-date-picker #checkOut [config]="{'locale': 'bg'}"></dp-date-picker>
+            <dp-date-picker
+                #checkOut
+                [config]="{'locale': 'bg', 'hideOnOutsideClick': false}"
+                [(ngModel)]="reservation.checkOutDate"
+                [ngModelOptions]="{standalone: true}"
+                (onSelect)="dateSelected('check-out')">
+            </dp-date-picker>
         </div>
     </div>
     <div class="guests">

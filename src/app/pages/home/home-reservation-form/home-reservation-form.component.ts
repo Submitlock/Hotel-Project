@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {DatePickerComponent} from 'ng2-date-picker'; 
+import {DatePickerComponent} from 'ng2-date-picker';
 
 @Component({
   selector: 'app-home-reservation-form',
@@ -11,27 +11,46 @@ export class HomeReservationFormComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild('checkIn', {static: false}) checkInDate: DatePickerComponent;
-  @ViewChild('checkOut', {static: false}) checkOutDate: DatePickerComponent;
-  guests: number = 1;
+  @ViewChild('checkIn', {static: false}) checkInInput: DatePickerComponent;
+  @ViewChild('checkOut', {static: false}) checkOutInput: DatePickerComponent;
+  guests = 1;
+  reservation = {
+    checkInDate: null,
+    checkOutDate: null,
+  };
+  displayDate = {
+    checkInDay: new Date(),
+    checkOutDay: this.getNextDay()
+  };
 
   ngOnInit() {
   }
-  
+
   onSubmit(form: NgForm) {
-    console.log(form);
+    console.log(this.reservation);
+  }
+
+  dateSelected(type: string) {
+    switch (type) {
+      case 'check-in':
+        this.displayDate.checkInDay = new Date(this.reservation.checkInDate);
+        break;
+      case 'check-out':
+        this.displayDate.checkOutDay = new Date(this.reservation.checkOutDate);
+        break;
+    }
   }
 
   openCheckIn(event: Event) {
-    const clickOnCalendar = (event.target as HTMLElement).tagName != 'BUTTON';
+    const clickOnCalendar = (event.target as HTMLElement).tagName !== 'BUTTON';
     if (clickOnCalendar) {
-      this.checkInDate.api.open();
+      this.checkInInput.api.open();
     }
   }
-  openCheckOut() {
-    const clickOnCalendar = (event.target as HTMLElement).tagName != 'BUTTON';
+  openCheckOut(event: Event) {
+    const clickOnCalendar = (event.target as HTMLElement).tagName !== 'BUTTON';
     if (clickOnCalendar) {
-      this.checkOutDate.api.open();
+      this.checkOutInput.api.open();
     }
   }
   addGuest() {
@@ -42,4 +61,11 @@ export class HomeReservationFormComponent implements OnInit {
       this.guests--;
     }
   }
+  private getNextDay(): Date {
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+    return tomorrow;
+  }
 }
+
