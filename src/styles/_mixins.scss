@@ -1,0 +1,9 @@
+@mixin btn($background) {
+    letter-spacing: 2px;
+    padding: 15px 30px;
+    background: $background;
+}
+@mixin flexDirection($direction) {
+    display: flex;
+    flex-direction: $direction;
+}

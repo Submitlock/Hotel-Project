@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import 'vars';
+@import 'mixins';
+* {
+    font-family: 'Montserrat', sans-serif; 
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.container {
+    width: 75%;
+    margin: 0 auto;
+    transition: .2s ease;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+}
+
+@media only screen and (max-width: $breakPointtablet) {
+    .container {
+        width: 90%;
+    }
+}

@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hotel-project';
+  datePicker: Date;
+
+  onClick() {
+    if (this.datePicker) {
+      console.log( new Date(this.datePicker) );
+    } else {
+      console.log('Empty');
+    }
+  }
 }

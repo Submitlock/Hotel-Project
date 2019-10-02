@@ -1,16 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DpDatePickerModule } from 'ng2-date-picker';
+import { FormsModule } from '@angular/forms';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { NavMenuComponent } from './shared/nav-menu/nav-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    HeaderComponent,
+    NavMenuComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DpDatePickerModule,
+    FormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// Template: http://www.nicdarkthemes.com/themes/resort/wp/demo/apartment/
+// Font Awesome: https://www.npmjs.com/package/angular-font-awesome;
+// DatePicker: https://www.npmjs.com/package/ng2-date-picker;

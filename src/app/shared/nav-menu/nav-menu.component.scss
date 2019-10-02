@@ -1,0 +1,81 @@
+@import 'mixins', 'vars';
+
+nav {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    color: white;
+    .container {
+        @include flexDirection(row);
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo-container {
+        max-width: 130px;
+    }
+    img {
+        width: 100%;
+    }
+    ul {
+        display: flex;
+        li {
+            margin: 0px 10px;
+            .button {
+                @include btn($primaryColor);
+                padding: 5px 10px;
+            }
+            a {
+                font-size: 16px;
+                padding: 5px 10px;
+                color: white;
+                letter-spacing: 1.5px;
+            }
+        }
+    }
+    .icon-open-menu {
+        width: 25px;
+        margin-top: 20px;
+        cursor: pointer;
+        display: none;
+    }
+    @media only screen and (max-width: 800px) {
+        .container {
+            justify-content: center;
+            flex-direction: column;
+        }
+        .desktop-navigation {
+            display: none;
+        }
+        .icon-open-menu {
+            display: block;
+        }
+    }  
+    // MOBILE MENU
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background: $secondaryColor;
+        display: flex;
+        flex-direction: column;
+        .close-icon {
+            cursor: pointer;
+            text-align: right;
+            margin: 15px;
+        }
+        .mobile-navigation {
+            flex-direction: column;
+            width: 250px;
+            margin: 100px auto;
+            li {
+                margin: 20px 0;
+            }
+            a {
+                font-size: 23px;
+                display: block;
+            }
+        }
+    }
+}
