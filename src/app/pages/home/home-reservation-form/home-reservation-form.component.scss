@@ -47,4 +47,10 @@ form {
         color: white;
         cursor: pointer;
     }
+
+    @media only screen and (max-width: 640px) {
+        .form-container {
+            flex-direction: column;
+        }
+    }
 }

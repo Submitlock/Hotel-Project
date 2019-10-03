@@ -39,12 +39,134 @@ button {
         outline: none;
     }
 }
-// DATE_PICKER 
-.dp-picker-input {
-    display: none;
-}
+
 @media only screen and (max-width: $breakPointDesktop) {
     .container {
         width: 90%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DATE_PICKER 
+div[style*="left: -300px"] {
+    left: 0!important;
+}
+.dp-picker-input {
+    display: none;
+}
+.dp-day-calendar-container {
+    background: $secondaryColor!important;
+    width: 300px;
+    padding: 10px;
+
+    button:not(.dp-selected) {
+        background: $secondaryColor!important;
+        color: white;
+        font-size: 15px;
+    }
+
+    .dp-calendar-day {
+        width: 14.2%;
+    }
+
+    .dp-nav-header-btn {
+        font-size: 19px!important;
+    }
+
+    .dp-selected {
+        background: $primaryColor!important;
+    }
+
+    .dp-calendar-nav-container {
+        border: none;
+    }
+
+    .dp-weekdays {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .dp-calendar-wrapper {
+        border: none;
+    }
+
+    span {
+        color: white;
+        border: none!important;
+        width: 14.2%!important;
+    }
+
+    .dp-nav-btns-container {
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        top: 2px;
+        transform: scale(1.1);
+    }
+}
+.dp-month-calendar-container {
+    background: $secondaryColor!important;
+    padding: 10px;
+
+    button {
+        background: $secondaryColor;
+        color: white;
+        font-size: 15px;
+    }
+
+    .dp-nav-header-btn {
+        font-size: 19px!important;
+    }
+
+    .dp-calendar-wrapper {
+        border: none;
+    }
+
+    .dp-calendar-nav-container {
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    .dp-nav-btns-container {
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        top: 2px;
+        transform: scale(1.1);
+    }
+
+}
+.dp-popup {
+    background: $secondaryColor!important;
+    border: none!important;
+    left: 0!important;
+}
+
+@media only screen and (max-width: 400px) {
+    .dp-popup {
+        left: -55px!important;
     }
 }

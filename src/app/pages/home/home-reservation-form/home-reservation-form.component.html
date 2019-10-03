@@ -3,33 +3,34 @@
         <div class="check-in" (click)="openCheckIn($event)">
             <label for="check-in">Пристигане</label>
             <div class="display-date">
-                <h1> {{ displayDate.checkInDay | transformDate: 'getDay' }} </h1>
+                <h1> {{ reservation.checkInDate | transformDate: 'getDay' }} </h1>
                 <div class="month">
-                    <span> {{ displayDate.checkInDay | transformDate: 'getMonth' }} </span>
+                    <span> {{ reservation.checkInDate | transformDate: 'getMonth' }} </span>
                     <fa name="angle-down"></fa>
                 </div>
             </div>
             <dp-date-picker 
                 #checkIn 
                 [config]="{'locale': 'bg', 'hideOnOutsideClick': false}"
-                [(ngModel)]="reservation.checkInDate"
+                [(ngModel)]="dateInputs.checkInDate"
                 [ngModelOptions]="{standalone: true}"
-                (onSelect)="dateSelected('check-in')">
+                (onSelect)="dateSelected('check-in')"
+                class="123">
             </dp-date-picker>
         </div>
         <div class="check-out" (click)="openCheckOut($event)">
             <label for="check-out">Напускане</label>
             <div class="display-date">
-                <h1> {{ displayDate.checkOutDay | transformDate: 'getDay' }} </h1>
+                <h1> {{ reservation.checkOutDate | transformDate: 'getDay' }} </h1>
                 <div class="month">
-                    <span> {{ displayDate.checkOutDay | transformDate: 'getMonth' }} </span>
+                    <span> {{ reservation.checkOutDate | transformDate: 'getMonth' }} </span>
                     <fa name="angle-down"></fa>
                 </div>
             </div>
             <dp-date-picker
                 #checkOut
                 [config]="{'locale': 'bg', 'hideOnOutsideClick': false}"
-                [(ngModel)]="reservation.checkOutDate"
+                [(ngModel)]="dateInputs.checkOutDate"
                 [ngModelOptions]="{standalone: true}"
                 (onSelect)="dateSelected('check-out')">
             </dp-date-picker>
@@ -37,7 +38,7 @@
     </div>
     <div class="guests">
         <fa name="minus" class="icon" (click)="removeGuest()"></fa>
-        <h3> {{guests}} {{guests > 1 ? 'Гости' : 'Гост'}} </h3>
+        <h3> {{ reservation.guests }} {{ reservation.guests > 1 ? 'Гости' : 'Гост' }} </h3>
         <fa name="plus" class="icon" (click)="addGuest()"></fa>
     </div>
     <button type="submit"> Проверете за свободни стаи </button>

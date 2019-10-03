@@ -13,59 +13,71 @@ export class HomeReservationFormComponent implements OnInit {
 
   @ViewChild('checkIn', {static: false}) checkInInput: DatePickerComponent;
   @ViewChild('checkOut', {static: false}) checkOutInput: DatePickerComponent;
-  guests = 1;
-  reservation = {
-    checkInDate: null,
-    checkOutDate: null,
-  };
-  displayDate = {
-    checkInDay: new Date(),
-    checkOutDay: this.getNextDay()
+
+  private reservation = {
+    checkInDate: new Date(),
+    checkOutDate: this.getNextDay( new Date() ),
+    guests: 1
   };
 
+  private dateInputs = {
+    checkInDate: null,
+    checkOutDate: null
+  }
+  
   ngOnInit() {
   }
 
-  onSubmit(form: NgForm) {
-    console.log(this.reservation);
+  private onSubmit(form: NgForm): void {
+    console.log('First', this.reservation);
+    this.dateInputs.checkOutDate = this.dateInputs.checkInDate;
+    console.log('Second', this.reservation);
   }
 
-  dateSelected(type: string) {
+  private dateSelected(type: string): void {
     switch (type) {
       case 'check-in':
-        this.displayDate.checkInDay = new Date(this.reservation.checkInDate);
+        this.reservation.checkInDate = this.dateInputs.checkInDate ? new Date(this.dateInputs.checkInDate) : new Date();
+        if (this.reservation.checkInDate > this.reservation.checkOutDate) {
+          this.reservation.checkOutDate = this.getNextDay(this.reservation.checkInDate);
+        }
         break;
       case 'check-out':
-        this.displayDate.checkOutDay = new Date(this.reservation.checkOutDate);
+        this.reservation.checkOutDate = this.dateInputs.checkOutDate ? new Date(this.dateInputs.checkOutDate) : this.getNextDay(this.reservation.checkInDate);
         break;
     }
   }
 
-  openCheckIn(event: Event) {
+  private openCheckIn(event: Event): void {
     const clickOnCalendar = (event.target as HTMLElement).tagName !== 'BUTTON';
     if (clickOnCalendar) {
+      this.checkOutInput.api.close();
       this.checkInInput.api.open();
     }
   }
-  openCheckOut(event: Event) {
+
+  private openCheckOut(event: Event): void {
     const clickOnCalendar = (event.target as HTMLElement).tagName !== 'BUTTON';
     if (clickOnCalendar) {
+      this.checkInInput.api.close();
       this.checkOutInput.api.open();
     }
   }
-  addGuest() {
-    this.guests++;
+
+  private addGuest(): void {
+    this.reservation.guests++;
   }
-  removeGuest() {
-    if (this.guests > 1) {
-      this.guests--;
+
+  private removeGuest(): void {
+    if (this.reservation.guests > 1) {
+      this.reservation.guests--;
     }
   }
-  private getNextDay(): Date {
-    const today = new Date();
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
-    return tomorrow;
+
+  private getNextDay(day: Date): Date {
+    const nextDay = new Date();
+    nextDay.setDate(day.getDate() + 1);
+    return nextDay;
   }
 }
 
