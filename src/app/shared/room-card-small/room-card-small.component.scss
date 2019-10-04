@@ -1,0 +1,71 @@
+@import 'mixins', 'vars';
+
+.card {
+    width: 100%;
+    border: 1px solid #f1f1f1;
+
+    .card-image {
+        position: relative;
+
+        img {
+            width: 100%;
+            filter: brightness(.9);
+        }
+
+        .room-stars {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+
+            span {
+                color: white;
+                margin-right: 10px;
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+            
+            img {
+                width: 10px;
+                margin-right: 3px;
+            }
+        }
+    }
+
+    .card-body {
+        padding: 20px 20px;
+        padding-bottom: 40px;
+
+        .card-icons {
+            @include flex(null, null, center);
+            margin-top: 10px;
+            img {
+                width: 23px;
+            }
+            span {
+                margin-left: 10px;
+                margin-right: 15px;
+                font-size: 12px;
+                color: $textColor;
+            }
+        }
+
+        .card-content {
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        .button {
+            @include btn($primaryColor);
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 400px) {
+            .button {
+                display: block;
+                padding: 10px;
+                line-height: 25px;
+            }
+        }
+    }
+}

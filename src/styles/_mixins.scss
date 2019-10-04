@@ -2,6 +2,7 @@
     letter-spacing: 2px;
     background: $background;
     padding: 15px 30px;
+    color: white;
 }
 @mixin flex($direction, $content, $align) {
     display: flex;

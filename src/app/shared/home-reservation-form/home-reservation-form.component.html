@@ -1,0 +1,45 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="form-container">
+        <div class="check-in" (click)="openCheckIn($event)">
+            <label for="check-in">Пристигане</label>
+            <div class="display-date">
+                <h1> {{ reservation.checkInDate | transformDate: 'getDay' }} </h1>
+                <div class="month">
+                    <span> {{ reservation.checkInDate | transformDate: 'getMonth' }} </span>
+                    <fa name="angle-down"></fa>
+                </div>
+            </div>
+            <dp-date-picker 
+                #checkIn 
+                [config]="{'locale': 'bg', 'hideOnOutsideClick': false}"
+                [(ngModel)]="dateInputs.checkInDate"
+                [ngModelOptions]="{standalone: true}"
+                (onSelect)="dateSelected('check-in')"
+                class="123">
+            </dp-date-picker>
+        </div>
+        <div class="check-out" (click)="openCheckOut($event)">
+            <label for="check-out">Напускане</label>
+            <div class="display-date">
+                <h1> {{ reservation.checkOutDate | transformDate: 'getDay' }} </h1>
+                <div class="month">
+                    <span> {{ reservation.checkOutDate | transformDate: 'getMonth' }} </span>
+                    <fa name="angle-down"></fa>
+                </div>
+            </div>
+            <dp-date-picker
+                #checkOut
+                [config]="{'locale': 'bg', 'hideOnOutsideClick': false}"
+                [(ngModel)]="dateInputs.checkOutDate"
+                [ngModelOptions]="{standalone: true}"
+                (onSelect)="dateSelected('check-out')">
+            </dp-date-picker>
+        </div>
+    </div>
+    <div class="guests">
+        <fa name="minus" class="icon" (click)="removeGuest()"></fa>
+        <h3> {{ reservation.guests }} {{ reservation.guests > 1 ? 'Гости' : 'Гост' }} </h3>
+        <fa name="plus" class="icon" (click)="addGuest()"></fa>
+    </div>
+    <button type="submit"> Проверете за свободни стаи </button>
+</form>

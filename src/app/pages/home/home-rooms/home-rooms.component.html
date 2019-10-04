@@ -1,0 +1,28 @@
+<section>
+    <div class="container">
+        <h1> Нашите Стаи </h1>
+        <div class="row">
+            <div class="col">
+                <app-room-card-small></app-room-card-small>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <app-room-thumbnail [room]="rooms.familyRoom"></app-room-thumbnail>
+                    </div>
+                    <div class="col">
+                        <app-room-thumbnail [room]="rooms.doubleRoom"></app-room-thumbnail>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <app-room-thumbnail [room]="rooms.luxuryRoom"></app-room-thumbnail>
+                    </div>
+                    <div class="col">
+                        <app-room-thumbnail [room]="rooms.apartment"></app-room-thumbnail>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
